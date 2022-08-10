@@ -1,0 +1,89 @@
+@import "../../config";
+@import "../../utilities";
+
+body {
+  background-image: url("../../../library/images/bgImages/purple-slime-dark.jpg");
+  background-color: purple;
+  background-size: 1;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  //   overflow: scroll;
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: center;
+  //   position: relative;
+  //   align-items: center;
+}
+header {
+  background-color: $header-bg;
+  color: $header-text;
+  padding: 1.5rem 0;
+  @media only screen and (min-width: 600px) {
+    padding: 2rem 0;
+  }
+}
+//mobile nav//
+.nav-mobile {
+  display: flex;
+  justify-content: space-between;
+  @media only screen and (min-width: 700px) {
+    display: none;
+  }
+}
+.menu-icon {
+  font-size: 1.6rem;
+}
+.logo {
+  font-family: $logo-font;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: $header-text;
+  @media only screen and (min-width: 600px) {
+    font-size: 2rem;
+  }
+  @media only screen and (min-width: 992px) {
+    font-size: 2.25rem;
+  }
+}
+//desk nav//
+.nav-desk {
+  display: flex;
+  justify-content: space-between;
+  @media only screen and (max-width: 699px) {
+    display: none;
+  }
+}
+nav {
+  display: flex;
+  align-items: center;
+}
+.header-nav {
+  display: flex;
+  flex-direction: row;
+  gap: 5rem;
+  font-family: $sub-font;
+  font-size: 1.25rem;
+  @media only screen and (min-width: 992px) {
+    font-size: 1.625rem;
+  }
+}
+// .header-container {
+//   display: flex;
+//   justify-content: space-between;
+//   margin: auto;
+// }
+
+// nav ul {
+//   display: flex;
+//   color: $header-text;
+//   font-size: 1.75rem;
+//   gap: 10rem;
+//   font-family: $sub-font;
+// }
+// footer {
+//   bottom: 0;
+// }
+.home {
+  font-size: 3rem;
+}

@@ -1,0 +1,33 @@
+@import "config";
+@import "utilities";
+
+.searchbar-container {
+  padding: 2rem 0;
+  max-width: 80%;
+}
+.searchbar {
+  display: flex;
+  background-color: $border-color;
+  border-radius: 50rem;
+  justify-content: space-between;
+  padding: 0 0 0 2rem;
+  .search-input {
+    font-size: 1.6rem;
+    width: 90%;
+    font-family: $text-font;
+    @media only screen and (min-width: 600px) {
+      //   font-size: 2rem;
+    }
+    &:focus,
+    &:-webkit-autofill {
+      outline: none;
+    }
+  }
+}
+.search-btn {
+  font-size: 3rem;
+  color: $sub-color;
+  @media only screen and (min-width: 600px) {
+    // font-size: 4rem;
+  }
+}

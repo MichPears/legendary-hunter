@@ -1,0 +1,115 @@
+.small-icon {
+  height: 2rem;
+  width: 2rem;
+  // display: inline-block;
+  @media only screen and (min-width: 340px) {
+    margin-right: 0.5rem;
+  }
+}
+@mixin icon {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+//achiev icons//
+.legendary-achiev {
+  @include icon();
+  background-image: url("../../../library/images/achievIcons/Legendary_Trinkets.png");
+}
+//recipe icons//
+.legendary-recipe {
+  @include icon();
+  background-image: url("../../../library/images/recipeIcons/Recipe_sheet_legendary_gift.png");
+}
+//multiple use//
+.gift-of-fortune {
+  @include icon();
+  background-image: url("../../../library/images/componentIcons/MultipleUse/Gift_of_Fortune.png");
+}
+.mystic-clover {
+  @include icon();
+  background-image: url("../../../library/images/componentIcons/MultipleUse/Mystic_Clover.png");
+}
+.mystic-coin {
+  @include icon();
+  background-image: url("../../../library/images/componentIcons/MultipleUse/Mystic_Coin.png");
+}
+//gift of condensed magic//
+.gift-of-condensed-magic {
+  @include icon();
+  background-image: url("../../../library/images/componentIcons/GiftOfCondensedMagic/Gift_of_Condensed_Magic.png");
+}
+.gift-of-blood {
+  @include icon();
+  background-image: url("../../../library/images/componentIcons/GiftOfCondensedMagic/Gift_of_Blood.png");
+}
+.gift-of-venom {
+  @include icon();
+  background-image: url("../../../library/images/componentIcons/GiftOfCondensedMagic/Gift_of_Venom.png");
+}
+.gift-of-totems {
+  @include icon();
+  background-image: url("../../../library/images/componentIcons/GiftOfCondensedMagic/Gift_of_Totems.png");
+}
+.gift-of-dust {
+  @include icon();
+  background-image: url("../../../library/images/componentIcons/GiftOfCondensedMagic/Gift_of_Dust.png");
+}
+//gift of condensed might//
+.gift-of-condensed-might {
+  @include icon();
+  background-image: url("../../../library/images/componentIcons/GiftOfCondensedMight/Gift_of_Condensed_Might.png");
+}
+.gift-of-claws {
+  @include icon();
+  background-image: url("../../../library/images/componentIcons/GiftOfCondensedMight/Gift_of_Claws.png");
+}
+.gift-of-scales {
+  @include icon();
+  background-image: url("../../../library/images/componentIcons/GiftOfCondensedMight/Gift_of_Scales.png");
+}
+.gift-of-bones {
+  @include icon();
+  background-image: url("../../../library/images/componentIcons/GiftOfCondensedMight/Gift_of_Bones.png");
+}
+.gift-of-fangs {
+  @include icon();
+  background-image: url("../../../library/images/componentIcons/GiftOfCondensedMight/Gift_of_Fangs.png");
+}
+//Path of Fire//
+.gift-of-desert-mastery {
+  @include icon();
+  background-image: url("../../../library/images/componentIcons/PathOfFire/GiftOfDesertMastery/Gift_of_Desert_Mastery.png");
+}
+.gift-of-the-desert {
+  @include icon();
+  background-image: url("../../../library/images/componentIcons/PathOfFire/GiftOfDesertMastery/GiftOfTheDesert/Gift_of_the_Desert.png");
+}
+.gift-of-the-oasis {
+  @include icon();
+  background-image: url("../../../library/images/componentIcons/PathOfFire/GiftOfDesertMastery/GiftOfTheDesert/Gift_of_the_Oasis.png");
+}
+.gift-of-the-highlands {
+  @include icon();
+  background-image: url("../../../library/images/componentIcons/PathOfFire/GiftOfDesertMastery/GiftOfTheDesert/Gift_of_the_Highlands.png");
+}
+.gift-of-the-riverlands {
+  @include icon();
+  background-image: url("../../../library/images/componentIcons/PathOfFire/GiftOfDesertMastery/GiftOfTheDesert/Gift_of_the_Riverlands.png");
+}
+.gift-of-the-desolation {
+  @include icon();
+  background-image: url("../../../library/images/componentIcons/PathOfFire/GiftOfDesertMastery/GiftOfTheDesert/Gift_of_the_Desolation.png");
+}
+//coalescence//
+.gift-of-sentience {
+  @include icon();
+  background-image: url("../../../library/images/componentIcons/Coalescence/Gift_of_Sentience.png");
+}
+.gift-of-patience {
+  @include icon();
+  background-image: url("../../../library/images/componentIcons/Coalescence/Gift_of_Patience.png");
+}
+.hateful-sworl {
+  @include icon();
+  background-image: url("../../../library/images/componentIcons/Coalescence/Hateful_Sworl.png");
+}

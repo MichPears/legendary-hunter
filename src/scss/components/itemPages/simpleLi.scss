@@ -1,0 +1,32 @@
+@import "../../config";
+li {
+  font-size: 1.6rem;
+  font-family: $text-font;
+}
+a {
+  color: blue;
+}
+.checkbox,
+.number-input {
+  margin: 0;
+  // float: right;
+  border: 1px solid $description-text-color;
+  background-color: $border-color;
+}
+.number-input {
+  width: 4ch;
+}
+.simple-li-component {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.simple-li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem 0 0.5rem 0rem;
+}
+.indent {
+  margin-left: 2.5rem;
+}

@@ -1,0 +1,21 @@
+.mw {
+  margin: auto;
+  //   max-width: 300px;
+  max-width: 900px;
+  // padding: 0 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  //   @media only screen and (min-width: 600px) {
+  //     max-width: 600px;
+  //   }
+  //   @media only screen and (min-width: 768px) {
+  //     max-width: 700px;
+  //   }
+  @media only screen and (min-width: 992px) {
+    // max-width: 900px;
+  }
+  @media only screen and (min-width: 1200px) {
+    max-width: 1200px;
+  }
+}

@@ -1,0 +1,73 @@
+@import "../../config";
+@import "../../utilities";
+
+h1 {
+  font-size: 3.75rem;
+  color: $header-text;
+  font-family: $logo-font;
+  text-align: center;
+  padding: 1rem;
+}
+.help-icon {
+  color: white;
+  font-size: 3rem;
+  position: absolute;
+  right: 0;
+  top: 5rem;
+}
+.sections-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  //   flex-direction: column;
+  gap: 1rem;
+  //   flex-wrap: wrap;
+  //   background-color: red;
+  //   max-width: 90%;
+  //   margin: auto;
+  @media only screen and (min-width: 600px) {
+    grid-template-columns: 1fr 1fr;
+
+    // flex-direction: row;
+  }
+}
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  //   background-color: blue;
+  width: 100%;
+}
+.sections {
+  background-color: white;
+  border: 6px solid $border-color;
+  //   margin: auto;
+  padding: 1rem;
+  //   min-width: 90%;
+}
+.header-description-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  @media only screen and (min-width: 340px) {
+    flex-direction: row;
+  }
+}
+h3 {
+  color: $sub-color;
+  font-family: $sub-font;
+  font-weight: 500;
+  font-size: 2rem;
+}
+.header-description {
+  color: $description-text-color;
+  font-family: $text-font;
+  text-align: right;
+}
+.simple-list {
+  padding: 1rem 0;
+  @media only screen and (min-width: 340px) {
+    padding: 1rem;
+  }
+}
