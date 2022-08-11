@@ -51,8 +51,8 @@ export const t3trophies = {
 };
 //t4//
 const thickVialOfBlood = {
-  name: "Thick Vial of Blood",
-  image: "thick-vial-of-blood",
+  name: "Vial of Thick Blood",
+  image: "vial-of-thick-blood",
   expand: false,
 };
 const heavyBone = {
@@ -102,8 +102,8 @@ export const t4trophies = {
 };
 //t5//
 const potentVialOfBlood = {
-  name: "Potent Vial of Blood",
-  image: "potent-vial-of-blood",
+  name: "Vial of Potent Blood",
+  image: "vial-of-potent-blood",
   expand: false,
 };
 const largeBone = {
@@ -153,8 +153,8 @@ export const t5trophies = {
 };
 //t6//
 const powerfulVialOfBlood = {
-  name: "Powerful Vial of Blood",
-  image: "powerful-vial-of-blood",
+  name: "Vial of Powerful Blood",
+  image: "vial-of-powerful-blood",
   expand: false,
 };
 const ancientBone = {

@@ -5,6 +5,8 @@ import SmallIcon from "../icons/SmallIcon";
 import ComponentCheck from "./ComponentCheck";
 import SimpleLi from "./SimpleLi";
 
+import "../../scss/components/itemPages/simpleLi.scss";
+
 export default function SimpleLiExp({
   currentComponent,
   indent,
@@ -20,7 +22,7 @@ export default function SimpleLiExp({
   //   currentComponent.components.map((component) => console.log(component));
   // };
 
-  console.log(parentMultiplier, componentCount);
+  // console.log(parentMultiplier, componentCount);
   return (
     <ul className={`${indent}`}>
       <li className="simple-li">
@@ -31,7 +33,11 @@ export default function SimpleLiExp({
             {currentComponent.name}
           </span>
         </div>
-        <ComponentCheck quantity={componentCount} />
+        <ComponentCheck
+          quantity={componentCount}
+          currentComponent={currentComponent}
+          parentMultiplier={parentMultiplier}
+        />
       </li>
 
       {showList &&

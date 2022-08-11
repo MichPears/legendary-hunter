@@ -38,9 +38,26 @@
   @include icon();
   background-image: url("../../../library/images/componentIcons/GiftOfCondensedMagic/Gift_of_Condensed_Magic.png");
 }
+//blood//
 .gift-of-blood {
   @include icon();
   background-image: url("../../../library/images/componentIcons/GiftOfCondensedMagic/Gift_of_Blood.png");
+}
+.vial-of-blood {
+  @include icon();
+  background-image: url("../../../library/images/componentIcons/rawMats/Vial_of_Blood.png");
+}
+.vial-of-thick-blood {
+  @include icon();
+  background-image: url("../../../library/images/componentIcons/rawMats/Vial_of_Thick_Blood.png");
+}
+.vial-of-potent-blood {
+  @include icon();
+  background-image: url("../../../library/images/componentIcons/rawMats/Vial_of_Potent_Blood.png");
+}
+.vial-of-powerful-blood {
+  @include icon();
+  background-image: url("../../../library/images/componentIcons/rawMats/Vial_of_Powerful_Blood.png");
 }
 .gift-of-venom {
   @include icon();
