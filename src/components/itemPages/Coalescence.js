@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { IoHelpOutline } from "react-icons/io5";
 import "../../scss/components/itemPages/legendary-page.scss";
@@ -7,10 +7,14 @@ import SimpleLi from "./SimpleLi";
 import SimpleLiExp from "./SimpleLiExp";
 
 import coalescence from "../../library/itemInfo/coalescence";
+import { MaterialsListContext } from "../context/MaterialsListProvider";
+import MediumLi from "./MediumLi";
 
 export default function Coalescence() {
   let parentMultiplier = 1;
+  const [materialsList] = useContext(MaterialsListContext);
 
+  console.log(materialsList);
   return (
     <div className="legendary-page mw">
       <IoHelpOutline className="help-icon" />
@@ -55,13 +59,10 @@ export default function Coalescence() {
                     key={uuidv4()}
                     currentComponent={component}
                     parentMultiplier={parentMultiplier}
-                    // componentCount={componentCount}
-                    // setComponentCount={setComponentCount}
                   />
                 ) : (
                   <SimpleLi
                     key={uuidv4()}
-                    // quantity={component.quantity * componentCount}
                     currentComponent={component}
                     parentMultiplier={parentMultiplier}
                   />
@@ -78,7 +79,11 @@ export default function Coalescence() {
           </section>
           <section className="sections">
             <h3>Materials List</h3>
-            <ul className="achiev-list"></ul>
+            <ul className="achiev-list">
+              {materialsList.map((material) => (
+                <MediumLi key={uuidv4()} currentComponent={material} />
+              ))}
+            </ul>
           </section>
         </div>
       </div>

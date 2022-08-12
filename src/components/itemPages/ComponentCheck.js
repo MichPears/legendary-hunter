@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { MaterialsListContext } from "../context/MaterialsListProvider";
 
 export default function ComponentCheck({
   quantity,
@@ -7,6 +8,7 @@ export default function ComponentCheck({
 }) {
   const [componentAmount, setComponentAmount] = useState(0);
   const [checked, setChecked] = useState(false);
+  const [materialsList] = useContext(MaterialsListContext);
 
   const userInput = (e) => {
     let finalAmount = quantity;
@@ -25,9 +27,16 @@ export default function ComponentCheck({
     };
     if (quantity > 1) testNum(e);
     else testCheck();
-    return [currentComponent.name, finalAmount, parentMultiplier];
+    console.log(materialsList);
+    return [{ name: currentComponent.name, finalAmount, parentMultiplier }];
+    // return localStorage.setItem(
+    //   "materialsList",
+    //   JSON.stringify([
+    //     ...materialsList,
+    //     { name: currentComponent.name, finalAmount, parentMultiplier },
+    //   ])
+    // );
   };
-
   return (
     <>
       {quantity > 1 ? (
@@ -35,14 +44,14 @@ export default function ComponentCheck({
           type="number"
           className="number-input simple-li-component"
           value={componentAmount}
-          onChange={(e) => console.log(userInput(e))}
+          onChange={(e) => userInput(e)}
         />
       ) : (
         <input
           type="checkbox"
           className="checkbox simple-li-component"
           checked={checked}
-          onChange={(e) => console.log(userInput(e))}
+          onChange={(e) => userInput(e)}
         />
       )}
     </>
