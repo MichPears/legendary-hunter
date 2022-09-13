@@ -2,22 +2,19 @@ import React, { useContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { IoHelpOutline } from "react-icons/io5";
 import "../../scss/components/itemPages/legendary-page.scss";
-import SimpleLiLink from "./SimpleLiLink";
 import SimpleLi from "./SimpleLi";
 import SimpleLiExp from "./SimpleLiExp";
 
 import coalescence from "../../library/itemInfo/coalescence";
-// import { MaterialsListContext } from "../context/MaterialsListProvider";
-import MediumLi from "./MediumLi";
 import APIInput from "./APIInput";
 import NeededMatsList from "./NeededMatsList";
 import NeededAchievsList from "./NeededAchievsList";
 import NeededRecipesList from "./NeededRecipesList";
 import SimpleLiNotes from "./SimpleLiNotes";
+import HelpPopup from "./HelpPopup";
 
 export default function Coalescence() {
   let parentMultiplier = 1;
-  // const [materialsList] = useContext(MaterialsListContext);
   const [allItems, setAllItems] = useState([]);
   const [allAchievs, setAllAchievs] = useState([]);
   const [allRecipes, setAllRecipes] = useState([]);
@@ -25,11 +22,14 @@ export default function Coalescence() {
   const [renderAchievs, setRenderAchievs] = useState("loading");
   const [renderRecipes, setRenderRecipes] = useState("loading");
   const [renderMats, setRenderMats] = useState("loading");
+  const [errorMessage, setErrorMessage] = useState(false);
+  const [showHelp, setShowHelp] = useState(false);
 
   // console.log(materialsList);
   return (
     <div className="legendary-page mw">
-      {/* <IoHelpOutline className="help-icon" /> */}
+      <IoHelpOutline className="help-icon" onClick={() => setShowHelp(true)} />
+      <HelpPopup setShowHelp={setShowHelp} showHelp={showHelp} />
       <h1>{coalescence.name}</h1>
       <div className="sections-container">
         <div className="column">
@@ -104,12 +104,23 @@ export default function Coalescence() {
             setRenderAchievs={setRenderAchievs}
             setRenderRecipes={setRenderRecipes}
             setRenderMats={setRenderMats}
+            setErrorMessage={setErrorMessage}
           />
           {!renderGeneral ? (
             <section className="sections-no-api">
-              <h3 className="no-api-text">
-                Add your API above for a personalized list!
-              </h3>
+              {!errorMessage ? (
+                <h3 className="no-api-text">
+                  Add your API above for a personalized list!
+                </h3>
+              ) : (
+                <>
+                  <h3 className="no-api-text">{errorMessage}</h3>
+                  <p className="error-text">
+                    Please make sure your API key has permission to access your
+                    inventories, characters, wallet, unlocks and progression.
+                  </p>
+                </>
+              )}
             </section>
           ) : (
             <>

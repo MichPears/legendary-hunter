@@ -282,7 +282,6 @@ export default function NeededMatsList({
     const coalescenceMatsFilteredDisplay = coalescenceMatsFiltered.filter(
       (mat) => mat !== null
     );
-    // console.log(coalescenceMatsFilteredDisplay);
     //check that allItems is not empty//
     if (allItems.length !== 0) {
       const mysticCoin = allItems.filter((mat) => mat.id === 19976);
@@ -327,7 +326,6 @@ export default function NeededMatsList({
       });
       const amalgamatedGemstonesNeeded = (neededMatsFilter) => {
         let funeraryIncense = neededMatsFilter.find((mat) => mat.id === 86093);
-        console.log(neededMatsFilter);
         let amalgamatedGemstonesArr = allItems.filter(
           (mat) => mat.id === amalgamatedGemstone.id
         );
@@ -347,7 +345,6 @@ export default function NeededMatsList({
             quantity: finalQuantity,
           });
         } else if (amalgamatedGemstonesArr) {
-          console.log(2);
           setSpecialItem({
             name: amalgamatedGemstone.name,
             id: amalgamatedGemstone.id,
@@ -357,8 +354,6 @@ export default function NeededMatsList({
             quantity: 250 - amalgamatedGemstonesQuantity,
           });
         } else if (funeraryIncense) {
-          console.log(3);
-
           setSpecialItem({
             name: amalgamatedGemstone.name,
             id: amalgamatedGemstone.id,
@@ -373,7 +368,6 @@ export default function NeededMatsList({
       let neededMatsFilter = neededMats.filter((mat) => mat !== null);
       setNeededMatsDisplay(neededMatsFilter);
       amalgamatedGemstonesNeeded(neededMatsFilter);
-      console.log("ran");
       setRenderMats("display");
     }
   }, [allItems]);
@@ -396,10 +390,6 @@ export default function NeededMatsList({
           )}
         </>
       )}
-
-      {/* {materialsList.map((material) => (
-                <MediumLi key={uuidv4()} currentComponent={material} />
-              ))} */}
     </ul>
   );
 }

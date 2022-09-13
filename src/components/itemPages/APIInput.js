@@ -12,6 +12,7 @@ export default function APIInput({
   setRenderAchievs,
   setRenderRecipes,
   setRenderMats,
+  setErrorMessage,
 }) {
   const [apiKey, setApiKey] = useState("");
 
@@ -22,6 +23,8 @@ export default function APIInput({
       );
       return apiAchievs.data;
     } catch (e) {
+      setRenderGeneral(false);
+      setErrorMessage("Invalid API: cannot access achievements.");
       console.log("invalid api-achievs");
     }
   };
@@ -32,6 +35,8 @@ export default function APIInput({
       );
       return apiRecipes.data;
     } catch (e) {
+      setRenderGeneral(false);
+      setErrorMessage("Invalid API: cannot access recipes.");
       console.log("invalid api-recipes");
     }
   };
@@ -43,6 +48,8 @@ export default function APIInput({
       );
       return apiBank.data;
     } catch (e) {
+      setRenderGeneral(false);
+      setErrorMessage("Invalid API: cannot access bank.");
       console.log("invalid api-bank");
     }
   };
@@ -54,6 +61,8 @@ export default function APIInput({
       );
       return apiMats.data;
     } catch (e) {
+      setRenderGeneral(false);
+      setErrorMessage("Invalid API: cannot access material storage.");
       console.log("invalid api-mats");
     }
   };
@@ -65,6 +74,8 @@ export default function APIInput({
       );
       return apiSharedInv.data;
     } catch (e) {
+      setRenderGeneral(false);
+      setErrorMessage("Invalid API: cannot access shared inventory.");
       console.log("invalid api-shared");
     }
   };
@@ -76,6 +87,8 @@ export default function APIInput({
       );
       return apiWallet.data;
     } catch (e) {
+      setRenderGeneral(false);
+      setErrorMessage("Invalid API: cannot access wallet.");
       console.log("invalid api-wallet");
     }
   };
@@ -87,6 +100,8 @@ export default function APIInput({
       );
       return apiChars.data;
     } catch (e) {
+      setRenderGeneral(false);
+      setErrorMessage("Invalid API: cannot access characters.");
       console.log("invalid api-characters");
     }
   };
@@ -99,6 +114,8 @@ export default function APIInput({
       return apiCharInvBags.data;
       // you get an array of bags //
     } catch {
+      setRenderGeneral(false);
+      setErrorMessage("Invalid API: cannot access character inventory.");
       console.log("invalid api- character inv");
     }
   };
@@ -131,10 +148,6 @@ export default function APIInput({
       characterInvBags.push(res.bags);
       if (characters.length === characterInvBags.length) {
         const allInvItems = getAllInvItems(characterInvBags);
-        // console.log(allInvItems);
-        // console.log(bankMats);
-        // console.log(storageMats);
-        // console.log(sharedMats);
         setAllItems([
           ...allInvItems,
           ...bankMats,
@@ -149,7 +162,6 @@ export default function APIInput({
 
   const submitAPI = async (e) => {
     e.preventDefault();
-    // console.log(coalescenceMats);
     setRenderGeneral(true);
     const apiBank = await fetchBank();
     const bankMats = apiBank.filter((slot) => slot !== null);
@@ -172,30 +184,23 @@ export default function APIInput({
     setAllAchievs(achievs);
     const recipes = await fetchRecipes();
     setAllRecipes(recipes);
-
-    // console.log(characterInvBags);
-    // arrangeBagArrays(characterInvBags);
-
-    // setPlayerMats([...bankMats]);
-    // console.log(apiCharInv.data);
   };
 
   const resetAPI = (e) => {
     e.preventDefault();
     setRenderGeneral(false);
-    console.log("api is reset");
     setAllAchievs([]);
     setAllRecipes([]);
     setAllItems([]);
     setRenderAchievs("loading");
     setRenderRecipes("loading");
     setRenderMats("loading");
-    setApiKey("");
+    setErrorMessage(false);
   };
 
   return (
     <div className="api-container">
-      <form className="api">
+      <form className="api" onSubmit={(e) => submitAPI(e)}>
         <input
           className="api-input"
           type="text"
@@ -203,9 +208,10 @@ export default function APIInput({
           placeholder="Add your API for a personalized list..."
           onChange={(e) => setApiKey(e.target.value)}
           disabled={renderGeneral}
+          required={true}
         />
         {!renderGeneral ? (
-          <button onClick={(e) => submitAPI(e)}>
+          <button type="submit">
             <IoAddCircleSharp className="api-btn" />
           </button>
         ) : (
