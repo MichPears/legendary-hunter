@@ -3,17 +3,11 @@
 
 body {
   background-image: url("../../../library/images/bgImages/binding-of-ipos-dark.png");
-  background-color: purple;
+  background-color: black;
   background-size: 1;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
-  //   overflow: scroll;
-  //   display: flex;
-  //   flex-direction: column;
-  //   justify-content: center;
-  //   position: relative;
-  //   align-items: center;
 }
 header {
   background-color: $header-bg;

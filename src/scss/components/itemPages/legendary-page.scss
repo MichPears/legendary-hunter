@@ -16,7 +16,7 @@ h1 {
 .help-icon {
   color: white;
   font-size: 3rem;
-  position: absolute;
+  position: fixed;
   right: 1rem;
   top: 6rem;
   cursor: pointer;
@@ -27,8 +27,8 @@ h1 {
 .close-btn {
   font-size: 3rem;
   position: absolute;
-  right: 1rem;
-  top: 1rem;
+  right: -1rem;
+  top: -1rem;
   cursor: pointer;
 }
 h2 {
@@ -37,7 +37,7 @@ h2 {
 }
 .help-popup {
   background-color: #d6cfda;
-  position: absolute;
+  position: fixed;
   right: -400px;
   width: 300px;
   text-align: justify;
@@ -69,6 +69,7 @@ h2 {
   align-items: center;
   padding-bottom: 1rem;
   justify-content: space-between;
+  position: relative;
 }
 .help-text {
   display: flex;
