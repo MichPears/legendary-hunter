@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { GiOpenBook } from "react-icons/gi";
+import { IoHelpOutline } from "react-icons/io5";
+import HelpPopup from "../itemPages/HelpPopup";
 
 export default function Header() {
+  const [showHelp, setShowHelp] = useState(false);
+
   return (
     <header>
       <div className="header-container mw">
@@ -25,6 +29,8 @@ export default function Header() {
           </nav>
         </div>
       </div>
+      <IoHelpOutline className="help-icon" onClick={() => setShowHelp(true)} />
+      <HelpPopup setShowHelp={setShowHelp} showHelp={showHelp} />
     </header>
   );
 }

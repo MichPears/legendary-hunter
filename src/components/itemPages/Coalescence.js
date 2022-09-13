@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { IoHelpOutline } from "react-icons/io5";
 import "../../scss/components/itemPages/legendary-page.scss";
 import SimpleLi from "./SimpleLi";
 import SimpleLiExp from "./SimpleLiExp";
@@ -11,7 +10,6 @@ import NeededMatsList from "./NeededMatsList";
 import NeededAchievsList from "./NeededAchievsList";
 import NeededRecipesList from "./NeededRecipesList";
 import SimpleLiNotes from "./SimpleLiNotes";
-import HelpPopup from "./HelpPopup";
 
 export default function Coalescence() {
   let parentMultiplier = 1;
@@ -23,13 +21,12 @@ export default function Coalescence() {
   const [renderRecipes, setRenderRecipes] = useState("loading");
   const [renderMats, setRenderMats] = useState("loading");
   const [errorMessage, setErrorMessage] = useState(false);
-  const [showHelp, setShowHelp] = useState(false);
 
   // console.log(materialsList);
   return (
     <div className="legendary-page mw">
-      <IoHelpOutline className="help-icon" onClick={() => setShowHelp(true)} />
-      <HelpPopup setShowHelp={setShowHelp} showHelp={showHelp} />
+      {/* <IoHelpOutline className="help-icon" onClick={() => setShowHelp(true)} />
+      <HelpPopup setShowHelp={setShowHelp} showHelp={showHelp} /> */}
       <h1>{coalescence.name}</h1>
       <div className="sections-container">
         <div className="column">
