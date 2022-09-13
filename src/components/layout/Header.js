@@ -19,8 +19,8 @@ export default function Header() {
           </p>
           <nav>
             <ul className="header-nav">
-              <li>Coalescence</li>
-              <li>Materials</li>
+              {/* <li>Coalescence</li>
+              <li>Materials</li> */}
             </ul>
           </nav>
         </div>

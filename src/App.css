@@ -135,6 +135,7 @@ input {
   border: none;
   background-color: transparent;
   cursor: pointer;
+  padding: 0;
 }
 a {
   text-decoration: none;

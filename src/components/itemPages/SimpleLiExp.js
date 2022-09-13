@@ -25,19 +25,27 @@ export default function SimpleLiExp({
   // console.log(parentMultiplier, componentCount);
   return (
     <ul className={`${indent}`}>
-      <li className="simple-li">
-        <div>
-          <SmallIcon image={currentComponent.image} />
-          <span onClick={() => setShowList(!showList)}>
-            {componentCount > 1 && <span>{`${componentCount} `}</span>}
-            {currentComponent.name}
+      <li className="simple-li-components">
+        <SmallIcon
+          image={currentComponent.image}
+          rarity={currentComponent.rarity}
+        />
+        <div className="simple-li-text">
+          <div className="simple-li-main">
+            <span className="li-name" onClick={() => setShowList(!showList)}>
+              {componentCount > 1 && <span>{`${componentCount} `}</span>}
+              {currentComponent.name}
+            </span>
+          </div>
+          <span className="header-description">
+            {currentComponent.obtained}
           </span>
         </div>
-        <ComponentCheck
+        {/* <ComponentCheck
           quantity={componentCount}
           currentComponent={currentComponent}
           parentMultiplier={parentMultiplier}
-        />
+        /> */}
       </li>
 
       {showList &&

@@ -14,6 +14,7 @@ export default function Searchbar() {
           placeholder="search..."
           onChange={(e) => setSearchValue(e.target.value)}
         />
+
         <IoSearchCircleSharp className="search-btn" />
       </div>
     </div>

@@ -1,7 +1,7 @@
 .mw {
   margin: auto;
   //   max-width: 300px;
-  max-width: 900px;
+  // max-width: 900px;
   // padding: 0 2rem;
   padding-left: 2rem;
   padding-right: 2rem;
@@ -12,13 +12,15 @@
   //   @media only screen and (min-width: 768px) {
   //     max-width: 700px;
   //   }
+  @media only screen and (min-width: 750px) {
+    max-width: 600px;
+  }
   @media only screen and (min-width: 992px) {
     // max-width: 900px;
-  }
-  @media only screen and (min-width: 1200px) {
     max-width: 1200px;
   }
 }
+
 .indent {
   margin-left: 1rem !important;
   @media only screen and (min-width: 400px) {

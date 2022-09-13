@@ -11,19 +11,21 @@ export default function MaterialsListProvider({ children }) {
     array.map((component) => {
       if (component.expand === true) {
         parentMultiplier = parentMultiplier * component.quantity;
-
         mappingLoop(component.components);
+
         allMaterialsList.push({
           name: component.name,
           image: component.image,
           quantity: parentMultiplier * component.quantity,
         });
-      } else
+      } else {
         allMaterialsList.push({
           name: component.name,
           image: component.image,
           quantity: parentMultiplier * component.quantity,
         });
+        // parentMultiplier = 1;
+      }
     });
   };
 

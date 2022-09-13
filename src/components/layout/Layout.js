@@ -7,7 +7,8 @@ import Searchbar from "../Searchbar";
 export default function Layout({ children }) {
   return (
     <div className="layout">
-      <Header /> <Searchbar />
+      <Header />
+      {/* <Searchbar /> */}
       {children}
       <Footer />
     </div>

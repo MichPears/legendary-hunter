@@ -6,7 +6,8 @@ h1 {
   color: $header-text;
   font-family: $logo-font;
   text-align: center;
-  padding: 1rem;
+  padding: 5rem 1rem 1rem 1rem;
+  font-weight: 700;
 }
 .help-icon {
   color: white;
@@ -24,7 +25,7 @@ h1 {
   //   background-color: red;
   //   max-width: 90%;
   //   margin: auto;
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: 992px) {
     grid-template-columns: 1fr 1fr;
 
     // flex-direction: row;
@@ -44,6 +45,14 @@ h1 {
   padding: 1rem;
   //   min-width: 90%;
 }
+.sections-no-api {
+  background-color: transparentize(black, 0.5);
+  border: 6px solid darken($border-color, 60%);
+  text-align: center;
+  //   margin: auto;
+  padding: 1rem;
+  //   min-width: 90%;
+}
 .header-description-container {
   display: flex;
   flex-direction: column;
@@ -59,11 +68,18 @@ h3 {
   font-family: $sub-font;
   font-weight: 500;
   font-size: 2rem;
+  padding-bottom: 1rem;
+}
+.no-api-text {
+  color: white;
+  font-family: $sub-font;
+  font-weight: 500;
+  font-size: 2rem;
 }
 .header-description {
   color: $description-text-color;
   font-family: $text-font;
-  text-align: right;
+  font-size: 1rem;
 }
 .simple-list {
   padding: 1rem 0;

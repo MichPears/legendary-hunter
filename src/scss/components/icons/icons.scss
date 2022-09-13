@@ -1,6 +1,8 @@
+@import "../../config";
 .small-icon {
   height: 2rem;
   width: 2rem;
+  border: 2px solid white;
   // display: inline-block;
   @media only screen and (min-width: 340px) {
     margin-right: 0.5rem;
@@ -10,9 +12,37 @@
   height: 4rem;
   width: 4rem;
   // display: inline-block;
+  border: 3px solid white;
   @media only screen and (min-width: 340px) {
     margin-right: 0.5rem;
   }
+}
+.special-icon {
+  height: 3.2rem;
+  width: 3.2rem;
+  border: 2.5px solid white;
+  // display: inline-block;
+  @media only screen and (min-width: 340px) {
+    margin-right: 0.5rem;
+  }
+}
+.legendary {
+  border-color: lighten($legendary, 20%);
+}
+.ascended {
+  border-color: lighten($ascended, 5%);
+}
+.exotic {
+  border-color: $exotic;
+}
+.rare {
+  border-color: darken($rare, 6%);
+}
+.masterwork {
+  border-color: $masterwork;
+}
+.fine {
+  border-color: darken($fine, 5%);
 }
 @mixin icon {
   background-repeat: no-repeat;
@@ -28,6 +58,11 @@
   @include icon();
   background-image: url("../../../library/images/recipeIcons/Recipe_sheet_legendary_gift.png");
 }
+//currencies//
+.gold-coin {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/98457F504BA2FAC8457F532C4B30EDC23929ACF9/619316.png");
+}
 //multiple use//
 .gift-of-fortune {
   @include icon();
@@ -41,94 +76,259 @@
   @include icon();
   background-image: url("../../../library/images/componentIcons/MultipleUse/Mystic_Coin.png");
 }
+.bloodstone-shard {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/D9F626FA79AA0C49436337B1C767023CCF14EFF9/434426.png");
+}
+.ball-of-dark-energy {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/073D6BA90E2434B02CDEC736AEA252202FA0BA71/1200192.png");
+}
+.amalgamated-gemstone {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/35BC2D35511C806348730A5E63152B2E260D4A5C/919363.png");
+}
+
 //gift of condensed magic//
 .gift-of-condensed-magic {
   @include icon();
-  background-image: url("../../../library/images/componentIcons/GiftOfCondensedMagic/Gift_of_Condensed_Magic.png");
+  background-image: url("https://render.guildwars2.com/file/09F42753049B20A54F6017B1F26A9447613016FE/1302179.png");
 }
 //blood//
 .gift-of-blood {
   @include icon();
-  background-image: url("../../../library/images/componentIcons/GiftOfCondensedMagic/Gift_of_Blood.png");
+  background-image: url("https://render.guildwars2.com/file/801E26996E5F172CC6450C104EBAB4E44F023950/1302176.png");
 }
 .vial-of-blood {
   @include icon();
-  background-image: url("../../../library/images/componentIcons/rawMats/Vial_of_Blood.png");
+  background-image: url("https://render.guildwars2.com/file/7D0B2A322001D999514908D519590D9B5D04DB35/66947.png");
 }
 .vial-of-thick-blood {
   @include icon();
-  background-image: url("../../../library/images/componentIcons/rawMats/Vial_of_Thick_Blood.png");
+  background-image: url("https://render.guildwars2.com/file/5103E44DB05DE7A9579C98037332294DB209CB72/66948.png");
 }
 .vial-of-potent-blood {
   @include icon();
-  background-image: url("../../../library/images/componentIcons/rawMats/Vial_of_Potent_Blood.png");
+  background-image: url("https://render.guildwars2.com/file/99AAE49EABF9A2415940FDB83CA1CE5E6E256020/66949.png");
 }
 .vial-of-powerful-blood {
   @include icon();
-  background-image: url("../../../library/images/componentIcons/rawMats/Vial_of_Powerful_Blood.png");
+  background-image: url("https://render.guildwars2.com/file/1A930A6A7B5B01EAB4CB36E79014C12B500BF6B3/66950.png");
 }
+//venom//
 .gift-of-venom {
   @include icon();
-  background-image: url("../../../library/images/componentIcons/GiftOfCondensedMagic/Gift_of_Venom.png");
+  background-image: url("https://render.guildwars2.com/file/7A58234EAA165603433A0B37E0E7CEB8C455E600/1302186.png");
 }
+.venom-sac {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/6D1AB79FCCD5E673A0220A39C56E45081B426019/66936.png");
+}
+.full-venom-sac {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/FE3D2BD0B88077ACE7E808504A3ACB0C4EDAD8D5/66937.png");
+}
+.potent-venom-sac {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/EA6A4C91F561EC5667947AEFE4CA436D0631CBE3/66938.png");
+}
+.powerful-venom-sac {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/543EC37900EA2A57E77FA891193A48D66AA224AB/66939.png");
+}
+//totems//
 .gift-of-totems {
   @include icon();
-  background-image: url("../../../library/images/componentIcons/GiftOfCondensedMagic/Gift_of_Totems.png");
+  background-image: url("https://render.guildwars2.com/file/0DFC0F6DF2BEE3C83DB2EA28150FEB7A94FEA9F6/1302185.png");
 }
+.totem {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/52A92F9505FD49FB655A0631525556D5B80E55C0/66953.png");
+}
+.engraved-totem {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/AB3AC996CC791BE0FF784CDC57060F05E6D23020/67000.png");
+}
+.intricate-totem {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/4DBC299E4B036A0DD3119A0F06BACA147C03B5C7/66954.png");
+}
+.elaborate-totem {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/C1ABF9082901FC3CEABC3138CBCCA1DAD5D41812/66955.png");
+}
+//dust//
 .gift-of-dust {
   @include icon();
-  background-image: url("../../../library/images/componentIcons/GiftOfCondensedMagic/Gift_of_Dust.png");
+  background-image: url("https://render.guildwars2.com/file/D20A5EF808673908059EE148A8B71242C3A4554C/1302181.png");
+}
+.pile-of-radiant-dust {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/3F95D5E3E1B07294C7625B36004F6AE76C05E117/434534.png");
+}
+.pile-of-luminous-dust {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/DDCA6504E718CA6DFF08F1483A2F356D0F4AEB4A/434535.png");
+}
+.pile-of-incandescent-dust {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/3501C2BBADF95BE5F14E31484850E851EFCA33CB/434536.png");
+}
+.pile-of-crystalline-dust {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/080D00670558CD9E580D5662030394B2206E92A6/434537.png");
 }
 //gift of condensed might//
 .gift-of-condensed-might {
   @include icon();
-  background-image: url("../../../library/images/componentIcons/GiftOfCondensedMight/Gift_of_Condensed_Might.png");
+  background-image: url("https://render.guildwars2.com/file/CCA4C2F8AF79D2EB0CFF381E3DDA3EA792BA7412/1302180.png");
 }
+//claws//
 .gift-of-claws {
   @include icon();
-  background-image: url("../../../library/images/componentIcons/GiftOfCondensedMight/Gift_of_Claws.png");
+  background-image: url("https://render.guildwars2.com/file/E0EE103FD3B8D1A83926BEFDDA7D5AFBE3946ED1/1302178.png");
 }
+.claw {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/325E12790C72C161E15B1CCE253C6079960CA138/66994.png");
+}
+.sharp-claw {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/97BCA6B90E56E6F0A06B3C031CDEA5EC0EBA17B5/66995.png");
+}
+.large-claw {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/3A4D64F4CE2951F358DE0AFCEA6551050FB4B4A7/66420.png");
+}
+.vicious-claw {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/043E2BBA270F381870F1B45E7C09C098CAFE3D14/66996.png");
+}
+//scales//
 .gift-of-scales {
   @include icon();
-  background-image: url("../../../library/images/componentIcons/GiftOfCondensedMight/Gift_of_Scales.png");
+  background-image: url("https://render.guildwars2.com/file/2CB33CA326C61A5350B4E40C0C621605CB456C25/1302184.png");
 }
+.scale {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/14C880782A481EE8051BDB176E542AF55C6CE663/66942.png");
+}
+.smooth-scale {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/95F72F7A1A3D6D01751148FF3D0D9709366F203B/66943.png");
+}
+.large-scale {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/F94ECFFF0FA9C321C108DA34E777B27B0AC9D5F8/66944.png");
+}
+.armored-scale {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/7061C82F4F9D0C585742F545C40A0F06BE0154DC/66527.png");
+}
+//bones//
 .gift-of-bones {
   @include icon();
-  background-image: url("../../../library/images/componentIcons/GiftOfCondensedMight/Gift_of_Bones.png");
+  background-image: url("https://render.guildwars2.com/file/7254B1CD565840690A9E66FD02B462A834334779/1302177.png");
 }
+.bone {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/B000AA18322202719E2B251B4EE735B5D3EF4EB1/66990.png");
+}
+.heavy-bone {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/A27457964A7F0A19DFFCA57FCB7308D233FE66E1/66991.png");
+}
+.large-bone {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/13F077BA5D5C6324CFCB0A2E39050F24A441190B/66987.png");
+}
+.ancient-bone {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/0EE45FBB1E1A004600E9BAA7097830B2DE08587D/66828.png");
+}
+
 .gift-of-fangs {
   @include icon();
-  background-image: url("../../../library/images/componentIcons/GiftOfCondensedMight/Gift_of_Fangs.png");
+  background-image: url("https://render.guildwars2.com/file/A1275A0309ADB2AA6024974C353170E0D2364DCB/1302182.png");
+}
+.fang {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/112DF0DE564C9C061FE8DDB198EA953ED527E9D6/66809.png");
+}
+.sharp-fang {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/5F9923611B4B5314D5993872EC2970CA7BE09DAB/65896.png");
+}
+.large-fang {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/DED4F23E44430C2BE1C0D491145A4946FC7D7C6F/223793.png");
+}
+.vicious-fang {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/F2050EE1A7A43EDCDCB1E971FDA608AD0566E4DA/66998.png");
 }
 //Path of Fire//
 .gift-of-desert-mastery {
   @include icon();
-  background-image: url("../../../library/images/componentIcons/PathOfFire/GiftOfDesertMastery/Gift_of_Desert_Mastery.png");
+  background-image: url("https://render.guildwars2.com/file/C8E86D04013AA541BE0CBACAE2080679CBF1DA71/1894676.png");
 }
 .gift-of-the-desert {
   @include icon();
-  background-image: url("../../../library/images/componentIcons/PathOfFire/GiftOfDesertMastery/GiftOfTheDesert/Gift_of_the_Desert.png");
+  background-image: url("https://render.guildwars2.com/file/39280A6342D79BDF657A49E7CBABF0DF26A5F628/1894678.png");
 }
 .gift-of-the-oasis {
   @include icon();
-  background-image: url("../../../library/images/componentIcons/PathOfFire/GiftOfDesertMastery/GiftOfTheDesert/Gift_of_the_Oasis.png");
+  background-image: url("https://render.guildwars2.com/file/084C4D98DCEDC00911BD654FA5A509BFBE05F537/1894679.png");
 }
 .gift-of-the-highlands {
   @include icon();
-  background-image: url("../../../library/images/componentIcons/PathOfFire/GiftOfDesertMastery/GiftOfTheDesert/Gift_of_the_Highlands.png");
+  background-image: url("https://render.guildwars2.com/file/5209CCBB18A506E4544301BFBE011073D8606E32/1894677.png");
 }
 .gift-of-the-riverlands {
   @include icon();
-  background-image: url("../../../library/images/componentIcons/PathOfFire/GiftOfDesertMastery/GiftOfTheDesert/Gift_of_the_Riverlands.png");
+  background-image: url("https://render.guildwars2.com/file/436AEAE8FEFBD77BF0B834C654E82310530A1E06/1894680.png");
 }
 .gift-of-the-desolation {
   @include icon();
-  background-image: url("../../../library/images/componentIcons/PathOfFire/GiftOfDesertMastery/GiftOfTheDesert/Gift_of_the_Desolation.png");
+  background-image: url("https://render.guildwars2.com/file/45E4479F34CD0915CA706017B67E9E3D9EDBF592/1894681.png");
+}
+.gift-of-the-rider {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/9E0761140A5609C4161130C5BB4FC44C1E69A338/1894682.png");
+}
+.spirit-of-the-raptor {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/9BCA7316F0C8A2F9BC2D18E2A195647F07AF230A/1894684.png");
+}
+.spirit-of-the-springer {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/E4F9AE26E70EE2E69F1F071366D431C978B64D3E/1894686.png");
+}
+.spirit-of-the-skimmer {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/7296F07134CC2A67A40EDD45B9315ECDF7732C64/1894685.png");
+}
+.spirit-of-the-jackal {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/4465436F499C040130806BD3C37BBBC7C2A3326C/1894683.png");
+}
+.funerary-incense {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/18E7F86FAFFA1FEBB53E0101C4F807724B7709BA/1894675.png");
+}
+//raid//
+.legendary-insight {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/6D33B7387BAF2E2CC9B5D37D1D1B01246AB6FA22/1302744.png");
 }
 //coalescence//
 .gift-of-sentience {
   @include icon();
   background-image: url("../../../library/images/componentIcons/Coalescence/Gift_of_Sentience.png");
+}
+.gift-of-complex-emotions {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/F40339A348AC2240FFC81A600DCBC8BD02133871/2155853.png");
 }
 .gift-of-patience {
   @include icon();
