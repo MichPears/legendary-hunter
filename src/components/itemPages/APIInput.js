@@ -13,8 +13,22 @@ export default function APIInput({
   setRenderRecipes,
   setRenderMats,
   setErrorMessage,
+  setLegArmory,
 }) {
   const [apiKey, setApiKey] = useState("");
+
+  const fetchLegendaryArmory = async () => {
+    try {
+      const apiLegArmor = await axios.get(
+        `https://api.guildwars2.com/v2/account/legendaryarmory?access_token=${apiKey}`
+      );
+      return apiLegArmor.data;
+    } catch (e) {
+      setRenderGeneral(false);
+      setErrorMessage("Invalid API: cannot access legendary armory.");
+      console.log("invalid api-leg armor");
+    }
+  };
 
   const fetchAchievs = async () => {
     try {
@@ -184,6 +198,8 @@ export default function APIInput({
     setAllAchievs(achievs);
     const recipes = await fetchRecipes();
     setAllRecipes(recipes);
+    const apiArmory = await fetchLegendaryArmory();
+    setLegArmory(apiArmory);
   };
 
   const resetAPI = (e) => {

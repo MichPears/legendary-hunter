@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "../../scss/components/itemPages/legendary-page.scss";
 import SimpleLi from "./SimpleLi";
@@ -10,6 +10,8 @@ import NeededMatsList from "./NeededMatsList";
 import NeededAchievsList from "./NeededAchievsList";
 import NeededRecipesList from "./NeededRecipesList";
 import SimpleLiNotes from "./SimpleLiNotes";
+import ColumnWideImg from "../icons/ColumnWideImg";
+import legendaryUnlock from "../../library/images/bgImages/550px-Legendary_unlock_book_transparent.png";
 
 export default function Coalescence() {
   let parentMultiplier = 1;
@@ -21,6 +23,15 @@ export default function Coalescence() {
   const [renderRecipes, setRenderRecipes] = useState("loading");
   const [renderMats, setRenderMats] = useState("loading");
   const [errorMessage, setErrorMessage] = useState(false);
+  const [legArmory, setLegArmory] = useState([]);
+
+  useEffect(() => {
+    const coalescenceOwned = legArmory.find(
+      (item) => item.id === coalescence.id
+    );
+    if (coalescenceOwned) setRenderGeneral("already-owned");
+    console.log(coalescenceOwned);
+  }, [legArmory]);
 
   // console.log(materialsList);
   return (
@@ -102,6 +113,7 @@ export default function Coalescence() {
             setRenderRecipes={setRenderRecipes}
             setRenderMats={setRenderMats}
             setErrorMessage={setErrorMessage}
+            setLegArmory={setLegArmory}
           />
           {!renderGeneral ? (
             <section className="sections-no-api">
@@ -118,6 +130,14 @@ export default function Coalescence() {
                   </p>
                 </>
               )}
+            </section>
+          ) : renderGeneral === "already-owned" ? (
+            <section className="sections-no-api">
+              <img src={legendaryUnlock} className="legendary-unlock" />
+              <h2 className="unlocked-header">You already have it!</h2>
+              <p className="unlocked-text">
+                You silly willy, why are you even searching for this?
+              </p>
             </section>
           ) : (
             <>

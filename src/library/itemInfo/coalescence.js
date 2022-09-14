@@ -489,7 +489,7 @@ const giftOfCompassion = {
   image: "gift-of-sentience",
   rarity: "legendary",
   quantity: 1,
-  obtained: "~ Created at Mystic Forge",
+  obtained: "~ purchased from Scholar Glenna",
   expand: true,
   components: [
     giftOfDesertMastery,
@@ -527,7 +527,12 @@ const coalescenceComponents = [
   hatefulSworl,
 ];
 const coalescence = {
+  id: 91234,
   name: "Coalescence",
+  rarity: "legendary",
+  image:
+    "https://render.guildwars2.com/file/962F99162FDE4AF471DF9E3BCA712CD6F5050B53/2149899.png",
+  link: "https://wiki.guildwars2.com/wiki/Coalescence",
   requiredAchievs: coalescenceAchievs,
   requiredRecipes: coalescenceRecipes,
   components: coalescenceComponents,
