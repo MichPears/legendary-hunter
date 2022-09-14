@@ -4,6 +4,7 @@ import {
   giftOfDesertMasteryBaseMats,
 } from "./giftOfDesertMastery";
 import {
+  amalgamatedGemstone,
   ballOfDarkEnergy,
   bloodstoneShard,
   funeraryIncense,
@@ -13,10 +14,12 @@ import {
   giftOfTheHighlands,
   giftOfTheOasis,
   giftOfTheRiverlands,
+  globOfEctoplasm,
   hatefulSworl,
   legendaryInsight,
   mysticClover,
   mysticCoin,
+  obsidianShard,
   spiritOfTheJackal,
   spiritOfTheRaptor,
   spiritOfTheSkimmer,
@@ -435,6 +438,7 @@ export const coalescenceMats = [
     image: funeraryIncense.image,
     link: funeraryIncense.link,
     quantity: 250,
+    baseMats: funeraryIncense.baseMats,
   },
   {
     id: ballOfDarkEnergy.id,
@@ -527,6 +531,33 @@ const coalescence = {
   requiredAchievs: coalescenceAchievs,
   requiredRecipes: coalescenceRecipes,
   components: coalescenceComponents,
+  specialItemParentID: 86093,
+  specialItemChild: [
+    {
+      id: amalgamatedGemstone.id,
+      name: amalgamatedGemstone.name,
+      rarity: amalgamatedGemstone.rarity,
+      image: amalgamatedGemstone.image,
+      link: amalgamatedGemstone.link,
+      quantity: 250,
+    },
+    {
+      id: obsidianShard.id,
+      name: obsidianShard.name,
+      rarity: obsidianShard.rarity,
+      image: obsidianShard.image,
+      link: amalgamatedGemstone.link,
+      quantity: 250,
+    },
+    {
+      id: globOfEctoplasm.id,
+      name: globOfEctoplasm.name,
+      rarity: globOfEctoplasm.rarity,
+      image: globOfEctoplasm.image,
+      link: globOfEctoplasm.link,
+      quantity: 250,
+    },
+  ],
 };
 
 export default coalescence;

@@ -137,6 +137,7 @@ export const giftOfDesertMastery = {
       image: funeraryIncense.image,
       rarity: funeraryIncense.rarity,
       obtained: funeraryIncense.obtained,
+      baseMats: funeraryIncense.baseMats,
       quantity: 250,
       expand: funeraryIncense.expand,
     },

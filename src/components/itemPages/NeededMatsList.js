@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MediumLi from "./MediumLi";
 import { v4 as uuidv4 } from "uuid";
-import {
+import coalescence, {
   coalescenceMats,
   giftOfCompassionBaseMats,
 } from "../../library/itemInfo/coalescence";
@@ -33,7 +33,7 @@ export default function NeededMatsList({
   setRenderMats,
 }) {
   const [neededMatsDisplay, setNeededMatsDisplay] = useState([]);
-  const [specialItem, setSpecialItem] = useState({});
+  const [specialItemsDisplay, setSpecialItemsDisplay] = useState([]);
   let coalescenceMatsFiltered;
 
   const filterCoalescenceMats = () => {
@@ -314,6 +314,7 @@ export default function NeededMatsList({
               image: reqMat.image,
               link: reqMat.link,
               quantity: reqMat.quantity - currentMat.quantity,
+              baseMats: reqMat.baseMats,
             };
             //if the player has more than needed (giving a negative number or 0), we get null
           } else {
@@ -324,50 +325,73 @@ export default function NeededMatsList({
           return reqMat;
         }
       });
-      const amalgamatedGemstonesNeeded = (neededMatsFilter) => {
-        let funeraryIncense = neededMatsFilter.find((mat) => mat.id === 86093);
-        let amalgamatedGemstonesArr = allItems.filter(
-          (mat) => mat.id === amalgamatedGemstone.id
+      const specialMatsNeeded = (
+        neededMatsFilter,
+        specialItemParentID,
+        specialItemChild
+      ) => {
+        //get object of funerary incense where quantity = whats missing
+        let specialItemParent = neededMatsFilter.find(
+          (mat) => mat.id === specialItemParentID
         );
-        let amalgamatedGemstonesQuantity = unifyQuantity(
-          amalgamatedGemstonesArr
+        let specialItems = [];
+
+        //loop through special items
+        specialItemChild.forEach((spChild) => {
+          //find how many of the base mats player has in account - returns array of multiple objects
+          let specialItemMultiple = allItems.filter(
+            (mat) => mat.id === spChild.id
+          );
+          //unify quantity to get only one amount of each item
+          let specialItemQuantity = unifyQuantity(specialItemMultiple);
+          //if player has at least one funerary incence and at least one of the special mats
+          if (specialItemMultiple && specialItemParent) {
+            let finalQuantity =
+              specialItemParent.quantity - specialItemQuantity;
+            if (finalQuantity < 0) finalQuantity = 0;
+            specialItems.push({
+              id: spChild.id,
+              name: spChild.name,
+              rarity: spChild.rarity,
+              image: spChild.image,
+              link: spChild.link,
+              quantity: finalQuantity,
+            });
+          } else if (specialItemMultiple) {
+            //if player only has special mat but no funerary incense
+            specialItems.push({
+              id: spChild.id,
+              name: spChild.name,
+              rarity: spChild.rarity,
+              image: spChild.image,
+              link: spChild.link,
+              quantity: 250 - specialItemQuantity,
+            });
+          } else if (specialItemParent) {
+            //if player has funerary incense but no special mat
+            specialItems.push({
+              id: spChild.id,
+              name: spChild.name,
+              rarity: spChild.rarity,
+              image: spChild.image,
+              link: spChild.link,
+              quantity: specialItemParent.quantity,
+            });
+          }
+        });
+        let specialItemsFiltered = specialItems.filter(
+          (mat) => mat.quantity !== 0
         );
-        if (amalgamatedGemstonesArr && funeraryIncense) {
-          let finalQuantity =
-            funeraryIncense.quantity - amalgamatedGemstonesQuantity;
-          if (finalQuantity <= 0) finalQuantity = 0;
-          setSpecialItem({
-            name: amalgamatedGemstone.name,
-            id: amalgamatedGemstone.id,
-            rarity: amalgamatedGemstone.rarity,
-            image: amalgamatedGemstone.image,
-            link: amalgamatedGemstone.link,
-            quantity: finalQuantity,
-          });
-        } else if (amalgamatedGemstonesArr) {
-          setSpecialItem({
-            name: amalgamatedGemstone.name,
-            id: amalgamatedGemstone.id,
-            rarity: amalgamatedGemstone.rarity,
-            image: amalgamatedGemstone.image,
-            link: amalgamatedGemstone.link,
-            quantity: 250 - amalgamatedGemstonesQuantity,
-          });
-        } else if (funeraryIncense) {
-          setSpecialItem({
-            name: amalgamatedGemstone.name,
-            id: amalgamatedGemstone.id,
-            rarity: amalgamatedGemstone.rarity,
-            image: amalgamatedGemstone.image,
-            link: amalgamatedGemstone.link,
-            quantity: funeraryIncense.quantity,
-          });
-        }
+        setSpecialItemsDisplay(specialItemsFiltered);
       };
       //after looping through all coalescenceMats, we filter out nulls for display
       let neededMatsFilter = neededMats.filter((mat) => mat !== null);
       setNeededMatsDisplay(neededMatsFilter);
-      amalgamatedGemstonesNeeded(neededMatsFilter);
+      specialMatsNeeded(
+        neededMatsFilter,
+        coalescence.specialItemParentID,
+        coalescence.specialItemChild
+      );
       setRenderMats("display");
     }
   }, [allItems]);
@@ -384,7 +408,8 @@ export default function NeededMatsList({
               <MediumLi
                 key={uuidv4()}
                 currentComponent={material}
-                specialItem={specialItem}
+                specialItems={specialItemsDisplay}
+                specialItemParentID={coalescence.specialItemParentID}
               />
             ))
           )}

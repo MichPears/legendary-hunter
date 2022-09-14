@@ -397,6 +397,7 @@ export const funeraryIncense = {
   rarity: "legendary",
   image: "funerary-incense",
   obtained: "~ Purchased from various vendors",
+  baseMats: [68063, 19925, 19721],
   expand: false,
   link: "https://wiki.guildwars2.com/wiki/Funerary_Incense",
 };
@@ -463,4 +464,18 @@ export const amalgamatedGemstone = {
   rarity: "exotic",
   image: "amalgamated-gemstone",
   link: "https://wiki.guildwars2.com/wiki/Amalgamated_Gemstone",
+};
+export const obsidianShard = {
+  id: 19925,
+  name: "Obsidian Shard",
+  rarity: "legendary",
+  image: "obsidian-shard",
+  link: "https://wiki.guildwars2.com/wiki/Obsidian_Shard",
+};
+export const globOfEctoplasm = {
+  id: 19721,
+  name: "Glob of Ectoplasm",
+  rarity: "exotic",
+  image: "glob-of-ectoplasm",
+  link: "https://wiki.guildwars2.com/wiki/Glob_of_Ectoplasm",
 };

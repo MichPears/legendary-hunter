@@ -13,9 +13,9 @@ export default function HelpPopup({ setShowHelp, showHelp }) {
       </div>
       <div className="help-text">
         This website was made to check the achievements, recipes, and materials
-        you're missing to craft the legendary gw2's ring Coalescence.
+        you're missing to craft the legendary gw2 ring Coalescence.
         <br />
-        Not sure what to do? Just Follow the steps below!
+        Not sure what to do? Just follow the steps below!
         <ol>
           <li className="api-step">
             <div className="medium-li-num">1.</div>
@@ -53,7 +53,7 @@ export default function HelpPopup({ setShowHelp, showHelp }) {
           It only takes into account the materials you currently have in your
           inventory, shared inventory, material storage, and bank, so any items
           you might have waiting for you in the Trading Post, or any buy orders
-          current in progress will not be taken into account for the
+          currently in progress will not be taken into account for the
           calculations.
           <br /> Also, because this tool requires an external API server, it is
           possible that very recent changes made to your account will not be

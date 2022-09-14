@@ -88,6 +88,14 @@
   @include icon();
   background-image: url("https://render.guildwars2.com/file/35BC2D35511C806348730A5E63152B2E260D4A5C/919363.png");
 }
+.obsidian-shard {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/AE16FCC326D80A3906B17B6A75E8A91980BE4670/434362.png");
+}
+.glob-of-ectoplasm {
+  @include icon();
+  background-image: url("https://render.guildwars2.com/file/18CE5D78317265000CF3C23ED76AB3CEE86BA60E/65941.png");
+}
 
 //gift of condensed magic//
 .gift-of-condensed-magic {
