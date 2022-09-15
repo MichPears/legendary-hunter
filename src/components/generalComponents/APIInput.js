@@ -131,6 +131,7 @@ export default function APIInput({
     let allBags = [];
     let arrOfInvs = [];
     let allInvSlots = [];
+    //this removes one level of nesting: takes each individual bag and pushes it into a new array so they are on the same lvl
     arrayOfBagArrays.forEach((bagArr) => {
       bagArr.map((bag) => allBags.push(bag));
     });
