@@ -1,7 +1,6 @@
 import React from "react";
-import MediumIcon from "../icons/MediumIcon";
-import "../../scss/components/itemPages/simpleLi.scss";
-import SpecialIcon from "../icons/SpecialIcon";
+import "../../scss/components/list-styles/lis.scss";
+import SpecialIcon from "../images/SpecialIcon";
 
 export default function SpecialLi({ currentComponent }) {
   return (
@@ -15,7 +14,7 @@ export default function SpecialLi({ currentComponent }) {
         image={currentComponent.image}
         rarity={currentComponent.rarity}
       />
-      <a target="_blank" href={currentComponent.link}>
+      <a target="_blank" rel="noreferrer" href={currentComponent.link}>
         {currentComponent.name}
       </a>
       {/* </div> */}

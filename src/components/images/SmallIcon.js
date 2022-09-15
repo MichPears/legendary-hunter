@@ -1,5 +1,5 @@
 import React from "react";
-import "../../scss/components/icons/icons.scss";
+import "../../scss/components/images/icons.scss";
 
 export default function SmallIcon({ image, rarity }) {
   return (

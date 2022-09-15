@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import SmallIcon from "../icons/SmallIcon";
-import ComponentCheck from "./ComponentCheck";
+import React from "react";
+import SmallIcon from "../images/SmallIcon";
 
-import "../../scss/components/itemPages/simpleLi.scss";
+import "../../scss/components/list-styles/lis.scss";
 
 export default function SimpleLi({
   indent,

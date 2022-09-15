@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import "../../scss/components/itemPages/simpleLi.scss";
-import SmallIcon from "../icons/SmallIcon";
+import React from "react";
+import "../../scss/components/list-styles/lis.scss";
+import SmallIcon from "../images/SmallIcon";
 
 export default function SimpleLiLink({ name, link, image }) {
   // const [checked, setChecked] = useState(false);
@@ -8,7 +8,12 @@ export default function SimpleLiLink({ name, link, image }) {
     <li className="simple-li">
       <SmallIcon image={image} />
       <div>
-        <a href={link} target="_blank" className="simple-li-component">
+        <a
+          href={link}
+          target="_blank"
+          rel="noreferrer"
+          className="simple-li-component"
+        >
           {name}
         </a>
       </div>

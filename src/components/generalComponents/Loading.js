@@ -1,5 +1,5 @@
 import React from "react";
-import "../../scss/components/itemPages/loading.scss";
+import "../../scss/components/general-components/loading.scss";
 
 export default function Loading() {
   return (

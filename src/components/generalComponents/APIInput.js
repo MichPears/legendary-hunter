@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { IoAddCircleSharp } from "react-icons/io5";
 import { IoMdRefreshCircle } from "react-icons/io";
+import "../../scss/components/general-components/searchbar.scss";
 
 export default function APIInput({
   setAllItems,
@@ -26,7 +27,6 @@ export default function APIInput({
     } catch (e) {
       setRenderGeneral(false);
       setErrorMessage("Invalid API: cannot access legendary armory.");
-      console.log("invalid api-leg armor");
     }
   };
 
@@ -39,7 +39,6 @@ export default function APIInput({
     } catch (e) {
       setRenderGeneral(false);
       setErrorMessage("Invalid API: cannot access achievements.");
-      console.log("invalid api-achievs");
     }
   };
   const fetchRecipes = async () => {
@@ -51,7 +50,6 @@ export default function APIInput({
     } catch (e) {
       setRenderGeneral(false);
       setErrorMessage("Invalid API: cannot access recipes.");
-      console.log("invalid api-recipes");
     }
   };
 
@@ -64,7 +62,6 @@ export default function APIInput({
     } catch (e) {
       setRenderGeneral(false);
       setErrorMessage("Invalid API: cannot access bank.");
-      console.log("invalid api-bank");
     }
   };
 
@@ -77,7 +74,6 @@ export default function APIInput({
     } catch (e) {
       setRenderGeneral(false);
       setErrorMessage("Invalid API: cannot access material storage.");
-      console.log("invalid api-mats");
     }
   };
 
@@ -90,7 +86,6 @@ export default function APIInput({
     } catch (e) {
       setRenderGeneral(false);
       setErrorMessage("Invalid API: cannot access shared inventory.");
-      console.log("invalid api-shared");
     }
   };
 
@@ -103,7 +98,6 @@ export default function APIInput({
     } catch (e) {
       setRenderGeneral(false);
       setErrorMessage("Invalid API: cannot access wallet.");
-      console.log("invalid api-wallet");
     }
   };
 
@@ -116,7 +110,6 @@ export default function APIInput({
     } catch (e) {
       setRenderGeneral(false);
       setErrorMessage("Invalid API: cannot access characters.");
-      console.log("invalid api-characters");
     }
   };
 
@@ -130,7 +123,6 @@ export default function APIInput({
     } catch {
       setRenderGeneral(false);
       setErrorMessage("Invalid API: cannot access character inventory.");
-      console.log("invalid api- character inv");
     }
   };
 
@@ -139,7 +131,7 @@ export default function APIInput({
     let allBags = [];
     let arrOfInvs = [];
     let allInvSlots = [];
-    arrayOfBagArrays.map((bagArr) => {
+    arrayOfBagArrays.forEach((bagArr) => {
       bagArr.map((bag) => allBags.push(bag));
     });
     allBags = allBags.filter((bag) => bag !== null);

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { coalescenceRecipes } from "../../library/itemInfo/coalescence";
 import { v4 as uuidv4 } from "uuid";
-import MediumLi from "./MediumLi";
-import SimpleLiLink from "./SimpleLiLink";
-import Loading from "./Loading";
+import SimpleLiLink from "../lis/SimpleLiLink";
+import Loading from "../generalComponents/Loading";
 
 export default function NeededRecipesList({
   allRecipes,
@@ -71,7 +70,7 @@ export default function NeededRecipesList({
       );
       setRenderRecipes("display");
     }
-  }, [allRecipes]);
+  }, [allRecipes, setRenderRecipes]);
 
   const neededRecipesDisplay = neededRecipes.filter(
     (recipe) => recipe !== null

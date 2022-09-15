@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "../../scss/components/itemPages/simpleLi.scss";
-import SmallIcon from "../icons/SmallIcon";
+import "../../scss/components/list-styles/lis.scss";
+import SmallIcon from "../images/SmallIcon";
 
 export default function SimpleLiNotes({ name, link, image, notes, cost }) {
   const [showNotes, setShowNotes] = useState(false);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import MediumLi from "./MediumLi";
+import MediumLi from "../lis/MediumLi";
 import { v4 as uuidv4 } from "uuid";
 import coalescence, {
   coalescenceMats,
@@ -18,14 +18,12 @@ import {
   giftOfVenomBaseMats,
   mysticTributeBaseMats,
 } from "../../library/itemInfo/mysticTribute";
-import { checkMysticTribute } from "../../functions/checkMysticTribute";
 import {
   giftOfDesertMasteryBaseMats,
   giftOfTheDesertBaseMats,
   giftOfTheRiderBaseMats,
 } from "../../library/itemInfo/giftOfDesertMastery";
-import { amalgamatedGemstone } from "../../library/itemInfo/rawMaterials";
-import Loading from "./Loading";
+import Loading from "../generalComponents/Loading";
 
 export default function NeededMatsList({
   allItems,
@@ -284,9 +282,8 @@ export default function NeededMatsList({
     );
     //check that allItems is not empty//
     if (allItems.length !== 0) {
-      const mysticCoin = allItems.filter((mat) => mat.id === 19976);
       let playerMats = [];
-      coalescenceMats.map((mat) => {
+      coalescenceMats.forEach((mat) => {
         //for each item in coalescenceMats, check if player has one or more stacks - group the same type of item in filteredItems array (essentially it is an array of the same object with different quantities because they might come from different places in the account)
         const filteredItems = allItems.filter((item) => item.id === mat.id);
         //after getting an array of only the same kind of items, we sum them to get the total amount of the same item in the account
@@ -394,7 +391,7 @@ export default function NeededMatsList({
       );
       setRenderMats("display");
     }
-  }, [allItems]);
+  }, [allItems, setRenderMats]);
   return (
     <ul className="achiev-list">
       {renderMats === "loading" ? (

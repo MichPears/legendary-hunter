@@ -1,16 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "../../scss/components/itemPages/legendary-page.scss";
-import SimpleLi from "./SimpleLi";
-import SimpleLiExp from "./SimpleLiExp";
+import SimpleLi from "../lis/SimpleLi";
+import SimpleLiExp from "../lis/SimpleLiExp";
 
 import coalescence from "../../library/itemInfo/coalescence";
-import APIInput from "./APIInput";
-import NeededMatsList from "./NeededMatsList";
-import NeededAchievsList from "./NeededAchievsList";
-import NeededRecipesList from "./NeededRecipesList";
-import SimpleLiNotes from "./SimpleLiNotes";
-import ColumnWideImg from "../icons/ColumnWideImg";
+import APIInput from "../generalComponents/APIInput";
+import NeededMatsList from "../generatedLists/NeededMatsList";
+import NeededAchievsList from "../generatedLists/NeededAchievsList";
+import NeededRecipesList from "../generatedLists/NeededRecipesList";
+import SimpleLiNotes from "../lis/SimpleLiNotes";
 import legendaryUnlock from "../../library/images/bgImages/550px-Legendary_unlock_book_transparent.png";
 
 export default function Coalescence() {
@@ -30,7 +29,6 @@ export default function Coalescence() {
       (item) => item.id === coalescence.id
     );
     if (coalescenceOwned) setRenderGeneral("already-owned");
-    console.log(coalescenceOwned);
   }, [legArmory]);
 
   // console.log(materialsList);
@@ -133,7 +131,11 @@ export default function Coalescence() {
             </section>
           ) : renderGeneral === "already-owned" ? (
             <section className="sections-no-api">
-              <img src={legendaryUnlock} className="legendary-unlock" />
+              <img
+                src={legendaryUnlock}
+                alt="legendary-unlocked"
+                className="legendary-unlock"
+              />
               <h2 className="unlocked-header">You already have it!</h2>
               <p className="unlocked-text">
                 You silly willy, why are you even searching for this?

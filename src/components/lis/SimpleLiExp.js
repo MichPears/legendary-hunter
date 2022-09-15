@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-import SmallIcon from "../icons/SmallIcon";
-import ComponentCheck from "./ComponentCheck";
+import SmallIcon from "../images/SmallIcon";
 import SimpleLi from "./SimpleLi";
 
-import "../../scss/components/itemPages/simpleLi.scss";
+import "../../scss/components/list-styles/lis.scss";
 
 export default function SimpleLiExp({
   currentComponent,

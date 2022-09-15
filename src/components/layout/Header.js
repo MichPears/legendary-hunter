@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { GiOpenBook } from "react-icons/gi";
 import { IoHelpOutline } from "react-icons/io5";
-import HelpPopup from "../itemPages/HelpPopup";
+import HelpPopup from "./HelpPopup";
 
 export default function Header() {
   const [showHelp, setShowHelp] = useState(false);

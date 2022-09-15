@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { coalescenceAchievs } from "../../library/itemInfo/coalescence";
 import { v4 as uuidv4 } from "uuid";
-import MediumLi from "./MediumLi";
-import SimpleLi from "./SimpleLi";
-import SimpleLiLink from "./SimpleLiLink";
-import Loading from "./Loading";
+import SimpleLiLink from "../lis/SimpleLiLink";
+import Loading from "../generalComponents/Loading";
 
 export default function NeededAchievsList({
   allAchievs,
@@ -18,7 +16,6 @@ export default function NeededAchievsList({
       const coalescenceI = allAchievs.find((achiev) => achiev.id === 4035);
       const coalescenceII = allAchievs.find((achiev) => achiev.id === 4412);
       const coalescenceIII = allAchievs.find((achiev) => achiev.id === 4805);
-
       setNeededAchievs(
         coalescenceAchievs.map((achiev) => {
           if (coalescenceI) {
@@ -41,7 +38,7 @@ export default function NeededAchievsList({
       );
       setRenderAchievs("display");
     }
-  }, [allAchievs]);
+  }, [allAchievs, setRenderAchievs]);
 
   const neededAchievsDisplay = neededAchievs.filter(
     (achiev) => achiev !== null

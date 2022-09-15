@@ -1,7 +1,7 @@
 import React from "react";
-import MediumIcon from "../icons/MediumIcon";
-import SpecialLi from "../itemPages/SpecialLi";
-import "../../scss/components/itemPages/simpleLi.scss";
+import MediumIcon from "../images/MediumIcon";
+import SpecialLi from "./SpecialLi";
+import "../../scss/components/list-styles/lis.scss";
 import { v4 as uuidv4 } from "uuid";
 
 export default function MediumLi({
@@ -19,7 +19,7 @@ export default function MediumLi({
           image={currentComponent.image}
           rarity={currentComponent.rarity}
         />
-        <a target="_blank" href={currentComponent.link}>
+        <a target="_blank" rel="noreferrer" href={currentComponent.link}>
           {currentComponent.name}
         </a>
       </div>
