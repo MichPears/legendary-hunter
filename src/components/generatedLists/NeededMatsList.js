@@ -34,6 +34,8 @@ export default function NeededMatsList({
   const [specialItemsDisplay, setSpecialItemsDisplay] = useState([]);
   let coalescenceMatsFiltered;
 
+  //this function loops through all items used in coalescence and checks if player already has them - checks big components first, and if the player doesnt have them, loops through the minor ones
+  //each component has a list of "base mats" which represent the ids of the base materials needed to craft the component - if player has the bigger component, returns null for each base component
   const filterCoalescenceMats = () => {
     //find if player has already crafted a mystic tribute and subtract mats already used
     const mysticTribute = allItems.find((mat) => mat.id === 71820);
@@ -41,7 +43,6 @@ export default function NeededMatsList({
 
     coalescenceMatsFiltered = coalescenceMats.map((mat) => {
       let finalItem = mat;
-      // checkMysticTribute(mysticTribute, mat, finalItem, allItems);
       if (mysticTribute) {
         mysticTributeBaseMats.forEach((mtBM) =>
           mat.id === mtBM ? (finalItem = null) : null
@@ -51,18 +52,13 @@ export default function NeededMatsList({
         //if player doesnt have MT, checks if they have the subcomponents and subtracts corresponding mats
         const giftOfCondensedMagic = allItems.find((mat) => mat.id === 76530);
         const giftOfCondensedMight = allItems.find((mat) => mat.id === 70867);
-        // const mysticClovers = allItems.find((mat) => mat.id === 19675);
-
-        // const mysticCoins = allItems.find((mat) => mat.id === 19976);
 
         if (giftOfCondensedMagic) {
           giftOfCondensedMagicBaseMats.forEach((gocmBM) => {
             if (mat.id === gocmBM) {
               if (giftOfCondensedMagic.count >= 2) {
                 finalItem = null;
-              }
-              //this might break because it might not be a one-liner. Maybe add brackets? Cant test because we dont have an account with only one gift of condensed magic -- already added the brackets just in case
-              else
+              } else
                 finalItem = {
                   id: mat.id,
                   name: mat.name,
@@ -149,9 +145,7 @@ export default function NeededMatsList({
             if (mat.id === gocmBM) {
               if (giftOfCondensedMight.count >= 2) {
                 finalItem = null;
-              }
-              //this might break because it might not be a one-liner. Maybe add brackets? Cant test because we dont have an account with only one gift of condensed magic -- already added the brackets just in case
-              else
+              } else
                 finalItem = {
                   id: mat.id,
                   name: mat.name,
@@ -275,12 +269,16 @@ export default function NeededMatsList({
     return quantity;
   };
 
+  //above function is called inside this useEffect - currently gives a warning because it is defined outside of it. If placed as dependancy it runs a million times - needs to be refactored
+  //useEffect makes sure mats display state is not set until allItems is changed (it is changed in the APIinput component) - setRenderMats was added as dependancy to avoid warnings
   useEffect(() => {
+    //coalescenceMatsFiltered are all items player has in account that are used in coalescence - might return several objects of the same items if player has more than one stack in account
     const coalescenceMatsFiltered = filterCoalescenceMats();
+    //removes null for display
     const coalescenceMatsFilteredDisplay = coalescenceMatsFiltered.filter(
       (mat) => mat !== null
     );
-    //check that allItems is not empty//
+    //check that allItems is not empty
     if (allItems.length !== 0) {
       let playerMats = [];
       coalescenceMats.forEach((mat) => {
@@ -295,8 +293,8 @@ export default function NeededMatsList({
         ];
       });
 
+      // neededMats is copy of the coalescenceFilteredDisplay mats (which itself is a copy of the coalescenceMats that the player does NOT have), and loops through each item to get the difference between the amount of base mats the player has and the amount of base mats the player needs
       let neededMats = coalescenceMatsFilteredDisplay.map((reqMat) => {
-        //makes copy of coalescenceMats, where while looping through each object:
         let currentMat = playerMats.find(
           (ownedMat) => reqMat.id === ownedMat.id
         );
@@ -317,11 +315,13 @@ export default function NeededMatsList({
           } else {
             return null;
           }
-          //if the player does not have the item at all, we get the same amount as in coalescenceMats
+          //if the player does not have the item at all, we get the same amount as in coalescenceMatsFilteredDisplay
         } else {
           return reqMat;
         }
       });
+
+      //this function is used when there is a special item such as funerary incense, which is purchased with other materials that are not necesarily included in the main coalescenceMats array
       const specialMatsNeeded = (
         neededMatsFilter,
         specialItemParentID,
@@ -381,7 +381,7 @@ export default function NeededMatsList({
         );
         setSpecialItemsDisplay(specialItemsFiltered);
       };
-      //after looping through all coalescenceMats, we filter out nulls for display
+      //after looping through all remaining coalescenceMats (neededMats), we filter out nulls for display and calls functions defined above
       let neededMatsFilter = neededMats.filter((mat) => mat !== null);
       setNeededMatsDisplay(neededMatsFilter);
       specialMatsNeeded(
@@ -392,8 +392,9 @@ export default function NeededMatsList({
       setRenderMats("display");
     }
   }, [allItems, setRenderMats]);
+
   return (
-    <ul className="achiev-list">
+    <ul>
       {renderMats === "loading" ? (
         <Loading />
       ) : (

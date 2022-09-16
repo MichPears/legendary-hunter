@@ -9,25 +9,12 @@ a {
   color: lighten($header-bg, 30%);
   cursor: pointer;
 }
-.checkbox,
-.number-input {
-  margin: 0;
-  // float: right;
-  border: 1px solid $description-text-color;
-  background-color: $border-color;
-}
-.number-input {
-  width: 4ch;
-}
-.simple-li-component {
-  display: inline-block;
-  vertical-align: middle;
-}
 .li-name {
   cursor: pointer;
 }
 
-.simple-li {
+//small lis
+.small-li {
   display: grid;
   grid-template-columns: 1fr 20fr;
   gap: 0.3rem;
@@ -37,26 +24,22 @@ a {
     align-items: center;
   }
 }
-.simple-li-components {
+.small-li-components {
   display: flex;
   flex-direction: row;
-  gap: 0.2rem;
-  // gap: 0.3rem;
+  gap: 0.5rem;
   margin: 0.5rem 0 0.5rem 0rem;
   @media only screen and (min-width: 340px) {
-    // flex-direction: row;
     align-items: left;
   }
 }
-.simple-li-text {
+.small-li-text {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
   max-width: 85%;
-  // gap: 0.5rem;
-  // align-items: left;
-  // width: 250px;
 }
+//medium-lis
 .medium-li {
   display: grid;
   grid-template-columns: 1fr 1fr 10fr;
@@ -66,10 +49,7 @@ a {
   align-items: center;
   border-top: 2px solid $border-color;
 }
-// .medium-li-name {
-//   display: flex;
-//   align-items: center;
-// }
+
 .medium-li-num {
   display: flex;
   align-items: center;
@@ -86,9 +66,7 @@ a {
   padding: 0.5rem 0 0.5rem 0rem;
   align-items: center;
 }
-.centered {
-  margin: auto;
-}
+
 .special-li-num {
   display: flex;
   align-items: center;
@@ -101,6 +79,5 @@ a {
   font-size: 1.4rem;
   color: $description-text-color;
   line-height: 1.8rem;
-  // padding-left: 3rem;
   text-align: justify;
 }

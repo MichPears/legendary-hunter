@@ -3,19 +3,19 @@ import SmallIcon from "../images/SmallIcon";
 
 import "../../scss/components/list-styles/lis.scss";
 
-export default function SimpleLi({
+export default function SmallLi({
   indent,
   currentComponent,
   parentMultiplier,
 }) {
   return (
-    <li className={`simple-li-components ${indent}`}>
+    <li className={`small-li-components ${indent}`}>
       <SmallIcon
         image={currentComponent.image}
         rarity={currentComponent.rarity}
       />
-      <div className="simple-li-text">
-        <div className="simple-li-main">
+      <div className="small-li-text">
+        <div>
           {currentComponent.quantity * parentMultiplier > 1 && (
             <span>{`${currentComponent.quantity * parentMultiplier} `}</span>
           )}
@@ -23,11 +23,6 @@ export default function SimpleLi({
         </div>
         <span className="header-description">{currentComponent.obtained}</span>
       </div>
-      {/* <ComponentCheck
-        quantity={currentComponent.quantity * parentMultiplier}
-        currentComponent={currentComponent}
-        parentMultiplier={parentMultiplier}
-      /> */}
     </li>
   );
 }

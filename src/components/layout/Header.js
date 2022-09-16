@@ -8,7 +8,7 @@ export default function Header() {
 
   return (
     <header>
-      <div className="header-container mw">
+      <div className="mw">
         {/* mobile */}
         <div className="nav-mobile">
           <p className="logo">

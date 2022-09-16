@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "../../scss/components/itemPages/legendary-page.scss";
-import SimpleLi from "../lis/SimpleLi";
-import SimpleLiExp from "../lis/SimpleLiExp";
+import SmallLi from "../lis/SmallLi";
+import SmallLiExp from "../lis/SmallLiExp";
 
 import coalescence from "../../library/itemInfo/coalescence";
 import APIInput from "../generalComponents/APIInput";
 import NeededMatsList from "../generatedLists/NeededMatsList";
 import NeededAchievsList from "../generatedLists/NeededAchievsList";
 import NeededRecipesList from "../generatedLists/NeededRecipesList";
-import SimpleLiNotes from "../lis/SimpleLiNotes";
+import SmallLiNotes from "../lis/SmallLiNotes";
 import legendaryUnlock from "../../library/images/bgImages/550px-Legendary_unlock_book_transparent.png";
 
 export default function Coalescence() {
@@ -31,11 +31,8 @@ export default function Coalescence() {
     if (coalescenceOwned) setRenderGeneral("already-owned");
   }, [legArmory]);
 
-  // console.log(materialsList);
   return (
-    <div className="legendary-page mw">
-      {/* <IoHelpOutline className="help-icon" onClick={() => setShowHelp(true)} />
-      <HelpPopup setShowHelp={setShowHelp} showHelp={showHelp} /> */}
+    <div className="mw">
       <h1>{coalescence.name}</h1>
       <div className="sections-container">
         <div className="column">
@@ -45,9 +42,9 @@ export default function Coalescence() {
               <h3>Required Achievements</h3>
               <p className="header-description">click each item to expand </p>
             </div>
-            <ul className="simple-list">
+            <ul>
               {coalescence.requiredAchievs.map((achiev) => (
-                <SimpleLiNotes
+                <SmallLiNotes
                   key={uuidv4()}
                   name={achiev.name}
                   image="legendary-achiev"
@@ -62,9 +59,9 @@ export default function Coalescence() {
               <h3>Required Recipes</h3>
               <p className="header-description">click each item to expand </p>
             </div>
-            <ul className="simple-list">
+            <ul>
               {coalescence.requiredRecipes.map((recipe) => (
-                <SimpleLiNotes
+                <SmallLiNotes
                   key={uuidv4()}
                   name={recipe.name}
                   image={recipe.image}
@@ -81,16 +78,16 @@ export default function Coalescence() {
               <h3>Components</h3>
               <p className="header-description">click each item to expand </p>
             </div>
-            <ul className="simple-list">
+            <ul>
               {coalescence.components.map((component) =>
                 component.expand === true ? (
-                  <SimpleLiExp
+                  <SmallLiExp
                     key={uuidv4()}
                     currentComponent={component}
                     parentMultiplier={parentMultiplier}
                   />
                 ) : (
-                  <SimpleLi
+                  <SmallLi
                     key={uuidv4()}
                     currentComponent={component}
                     parentMultiplier={parentMultiplier}
@@ -184,7 +181,6 @@ export default function Coalescence() {
               </section>
             </>
           )}
-          {/* <h2>For this item you'll need:</h2> */}
         </div>
       </div>
     </div>

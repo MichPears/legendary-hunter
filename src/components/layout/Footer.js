@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function Footer() {
-  return <footer>Footer</footer>;
+  return <footer>MichPears © 2022</footer>;
 }

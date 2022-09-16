@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { IoAddCircleSharp } from "react-icons/io5";
 import { IoMdRefreshCircle } from "react-icons/io";
-import "../../scss/components/general-components/searchbar.scss";
+import "../../scss/components/general-components/input-styles.scss";
 
 export default function APIInput({
   setAllItems,
@@ -135,12 +135,16 @@ export default function APIInput({
     arrayOfBagArrays.forEach((bagArr) => {
       bagArr.map((bag) => allBags.push(bag));
     });
+    //filters out bags that are empty
     allBags = allBags.filter((bag) => bag !== null);
+    //removes one more lvl of nesting: takes each bag slot and pushes it into a new array so all slots are in same array (like one single giant bag)
     allBags.map((bag) => arrOfInvs.push(bag.inventory));
     arrOfInvs.map((inv) => inv.map((item) => allInvSlots.push(item)));
+    //returns all inventory slots that are not empty
     return allInvSlots.filter((slot) => slot !== null);
   };
 
+  //this funtion manages all inventory, bank, storage, etc. and sets them all together under useState allItems
   const groupCharacterBags = (
     characters,
     bankMats,
@@ -149,10 +153,11 @@ export default function APIInput({
     walletMats
   ) => {
     let characterInvBags = [];
-
+    //for every character in the account, fetch respective array of inventory bags
     characters.map(async (character) => {
       const res = await fetchCharacterInventoryBags(character);
       characterInvBags.push(res.bags);
+      //checks to see length of array of bags is equal to amount of characters. This ensures useState does not run before previous fetches are completed
       if (characters.length === characterInvBags.length) {
         const allInvItems = getAllInvItems(characterInvBags);
         setAllItems([
@@ -167,6 +172,7 @@ export default function APIInput({
     });
   };
 
+  //this function is triggered by user submit: starts all fetch requests, sets display to loading, sets unprocessed user information states
   const submitAPI = async (e) => {
     e.preventDefault();
     setRenderGeneral(true);
@@ -195,6 +201,7 @@ export default function APIInput({
     setLegArmory(apiArmory);
   };
 
+  //this function resets all info and display states
   const resetAPI = (e) => {
     e.preventDefault();
     setRenderGeneral(false);
@@ -214,7 +221,7 @@ export default function APIInput({
           className="api-input"
           type="text"
           value={apiKey}
-          placeholder="Add your API for a personalized list..."
+          placeholder="Add your API here..."
           onChange={(e) => setApiKey(e.target.value)}
           disabled={renderGeneral}
           required={true}

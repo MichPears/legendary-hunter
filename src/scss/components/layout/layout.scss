@@ -1,6 +1,7 @@
 @import "../../config";
 @import "../../utilities";
 
+//general layout
 body {
   background-image: url("../../../library/images/bgImages/binding-of-ipos-dark.png");
   background-color: black;
@@ -16,7 +17,7 @@ body {
 }
 header {
   background-color: $header-bg;
-  color: $header-text;
+  color: $primary-color;
   padding: 1.5rem 0;
   position: relative;
   @media only screen and (min-width: 600px) {
@@ -38,7 +39,7 @@ header {
   font-family: $logo-font;
   font-size: 1.6rem;
   font-weight: 700;
-  color: $header-text;
+  color: $primary-color;
   @media only screen and (min-width: 600px) {
     font-size: 2rem;
   }
@@ -68,25 +69,15 @@ nav {
     font-size: 1.625rem;
   }
 }
-// .header-container {
-//   display: flex;
-//   justify-content: space-between;
-//   margin: auto;
-// }
-
-// nav ul {
-//   display: flex;
-//   color: $header-text;
-//   font-size: 1.75rem;
-//   gap: 10rem;
-//   font-family: $sub-font;
-// }
-// footer {
-//   bottom: 0;
-// }
-.home {
-  font-size: 3rem;
+//footer
+footer {
+  color: $primary-color;
+  font-family: $sub-font;
+  text-align: center;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
 }
+
 //help popup//
 .help-icon {
   color: white;

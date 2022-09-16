@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import "../../scss/components/list-styles/lis.scss";
 import SmallIcon from "../images/SmallIcon";
 
-export default function SimpleLiNotes({ name, link, image, notes, cost }) {
+export default function SmallLiNotes({ name, image, notes, cost }) {
   const [showNotes, setShowNotes] = useState(false);
   return (
-    <li className="simple-li">
+    <li className="small-li">
       <SmallIcon image={image} />
       <div
         className="simple-li-component li-name"
@@ -18,8 +18,9 @@ export default function SimpleLiNotes({ name, link, image, notes, cost }) {
         <div>
           <div className="notes">
             {notes}
-            {cost && cost.includes("g") && <SmallIcon image="gold-coin" />}
-            {/* {cost.includes("g") ? <SmallIcon image="gold-coin" /> : null} */}
+            {cost && cost.includes("g") && (
+              <SmallIcon image="gold-coin" inline="inline-img" />
+            )}
           </div>
         </div>
       )}

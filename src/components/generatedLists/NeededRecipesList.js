@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { coalescenceRecipes } from "../../library/itemInfo/coalescence";
 import { v4 as uuidv4 } from "uuid";
-import SimpleLiLink from "../lis/SimpleLiLink";
+import SmallLiLink from "../lis/SmallLiLink";
 import Loading from "../generalComponents/Loading";
 
 export default function NeededRecipesList({
@@ -11,10 +11,11 @@ export default function NeededRecipesList({
 }) {
   const [neededRecipes, setNeededRecipes] = useState([]);
 
+  //useEffect makes sure recipes display state is not set until allRecipes is changed (it is changed in the APIinput component) - setRenderRecipes was added as dependancy to avoid warnings
   useEffect(() => {
+    //this is a check to make sure code doesnt run if recipes are empty (essentially before API is set and fetches are completed) - this means that if account is brand new and/or doesnt even have one recipe learned, it might appear to be eternally loading because the below code will never run
     if (allRecipes.length !== 0) {
       const giftOfBlood = allRecipes.find((recipe) => recipe === 11736);
-      // console.log(giftOfBlood);
       const giftofVenom = allRecipes.find((recipe) => recipe === 11735);
       const giftofTotems = allRecipes.find((recipe) => recipe === 11742);
       const giftOfDust = allRecipes.find((recipe) => recipe === 11741);
@@ -23,6 +24,7 @@ export default function NeededRecipesList({
       const giftOfBones = allRecipes.find((recipe) => recipe === 11739);
       const giftofFangs = allRecipes.find((recipe) => recipe === 11737);
 
+      //loops through the recipes needed for coalescence and if player has it, returns null so it wont display as "needed" - sets list on display
       setNeededRecipes(
         coalescenceRecipes.map((recipe) => {
           if (giftOfBlood) {
@@ -72,11 +74,12 @@ export default function NeededRecipesList({
     }
   }, [allRecipes, setRenderRecipes]);
 
+  //filters out null achievements for display
   const neededRecipesDisplay = neededRecipes.filter(
     (recipe) => recipe !== null
   );
   return (
-    <ul className="simple-list">
+    <ul>
       {renderRecipes === "loading" ? (
         <Loading />
       ) : (
@@ -85,7 +88,7 @@ export default function NeededRecipesList({
             <li>Congratulations! You have all required recipes!</li>
           ) : (
             neededRecipesDisplay.map((recipe) => (
-              <SimpleLiLink
+              <SmallLiLink
                 key={uuidv4()}
                 currentComponent={recipe}
                 image={recipe.image}
@@ -96,10 +99,6 @@ export default function NeededRecipesList({
           )}
         </>
       )}
-
-      {/* {materialsList.map((material) => (
-            <MediumLi key={uuidv4()} currentComponent={material} />
-          ))} */}
     </ul>
   );
 }

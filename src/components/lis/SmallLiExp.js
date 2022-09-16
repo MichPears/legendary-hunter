@@ -2,35 +2,28 @@ import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import SmallIcon from "../images/SmallIcon";
-import SimpleLi from "./SimpleLi";
+import SmallLi from "./SmallLi";
 
 import "../../scss/components/list-styles/lis.scss";
 
-export default function SimpleLiExp({
+export default function SmallLiExp({
   currentComponent,
   indent,
   parentMultiplier,
 }) {
   const [showList, setShowList] = useState(false);
-  // const componentTotal = componentCount * currentComponent.quantity;
-  // setComponentCount(componentTotal);
+  //change display info so parent multiplier is no longer necessary
   let componentCount = parentMultiplier * currentComponent.quantity;
 
-  // const testLoop = () => {
-  //   setShowList(!showList);
-  //   currentComponent.components.map((component) => console.log(component));
-  // };
-
-  // console.log(parentMultiplier, componentCount);
   return (
     <ul className={`${indent}`}>
-      <li className="simple-li-components">
+      <li className="small-li-components">
         <SmallIcon
           image={currentComponent.image}
           rarity={currentComponent.rarity}
         />
-        <div className="simple-li-text">
-          <div className="simple-li-main">
+        <div className="small-li-text">
+          <div>
             <span className="li-name" onClick={() => setShowList(!showList)}>
               {componentCount > 1 && <span>{`${componentCount} `}</span>}
               {currentComponent.name}
@@ -40,26 +33,18 @@ export default function SimpleLiExp({
             {currentComponent.obtained}
           </span>
         </div>
-        {/* <ComponentCheck
-          quantity={componentCount}
-          currentComponent={currentComponent}
-          parentMultiplier={parentMultiplier}
-        /> */}
       </li>
-
       {showList &&
         currentComponent.components.map((component) =>
           component.expand === true ? (
-            <SimpleLiExp
+            <SmallLiExp
               key={uuidv4()}
               currentComponent={component}
               parentMultiplier={componentCount}
-              // componentCount={componentCount}
-              // setComponentCount={setComponentCount}
               indent="indent"
             />
           ) : (
-            <SimpleLi
+            <SmallLi
               key={uuidv4()}
               currentComponent={component}
               parentMultiplier={componentCount}

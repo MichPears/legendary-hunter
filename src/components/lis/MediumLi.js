@@ -12,9 +12,7 @@ export default function MediumLi({
   return (
     <li>
       <div className={`medium-li`}>
-        {/* {currentComponent.quantity > 1 && ( */}
         <span className="medium-li-num">{`${currentComponent.quantity} `}</span>
-        {/* )} */}
         <MediumIcon
           image={currentComponent.image}
           rarity={currentComponent.rarity}
